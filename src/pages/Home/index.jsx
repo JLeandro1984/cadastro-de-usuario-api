@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <>
-      <h1>Olá JL 123</h1>    
+      <h1>Olá JL 123456</h1>    
     </>
   )
 }
