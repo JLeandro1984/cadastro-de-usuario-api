@@ -1,29 +1,23 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import "./style.css";
 import Trash from "../../assets/trash.svg";
-function Home() {
-  const [count, setCount] = useState(0);
+import api from "../../services/api";
 
-  const users = [
-    {
-      id: "xassfsfsd",
-      name: "Maria Jussara",
-      age: 31,
-      email: "maju@gmail.com",
-    },
-    {
-      id: "htgfgdfdgr",
-      name: "JLeandro",
-      age: 39,
-      email: "jleandro@gmail.com",
-    },
-    {
-      id: "ljhhtyfhf",
-      name: "Julia Rodrigues",
-      age: 20,
-      email: "julia@gmail.com",
-    },
-  ];
+function Home() {
+  let users = [];
+
+  async function getUsers() {
+    const usersFromApi = await api.get("/usuarios");
+
+    users = usersFromApi.data;
+    console.log(users);
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <div className="container">
       <form>
